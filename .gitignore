@@ -1,0 +1,6 @@
+music/*
+!music/.keep
+venv/
+__pycache__/
+*.pyc
+EOF
