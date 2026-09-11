@@ -17,6 +17,9 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
+            set -e
             cd /root/dev/radio-server
-            git pull origin main
+            git fetch origin
+            git reset --hard origin/trunk
             sudo systemctl restart radio
+            echo "Deployed commit: $(git rev-parse --short HEAD)"
